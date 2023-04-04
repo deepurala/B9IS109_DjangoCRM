@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Comapny{% endblock %}
+
+{% block content %}
+<div class="container">
+  <h1>Companies</h1>
+  <div class="row"></div>
+  <div class="col-md-8">
+    <table id="companyTable" class="table table-striped">
+      <tr>
+        <th>Name</th>
+        <th>Industry</th>
+        <th>Location</th>
+        <th>LinkedIn</th>
+      </tr>
+      {% if companies %}
+      {% for company in companies %}
+      <tr id="company-{{company.id}}">
+        <td class="companyName companyData" name="name">{{company.name}}</td>
+        <td class="companyIndustry companyData" name="industry">{{company.industry}}</td>
+        <td class="companyLocation companyData" name="location">{{company.location}}</td>
+        <td class="companyLinkedIn companyData" name="linkedin">{{company.linkedIn}}</td>
+      </tr>
+      {% endfor %}
+      {% else %}
+        No Company
+      {% endif %}
+    </table>
+  </div>
+{% endblock %}
